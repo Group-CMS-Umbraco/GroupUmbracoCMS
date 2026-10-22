@@ -1,0 +1,9 @@
+﻿/*TAILWIND HÄR INNE*/
+/* ALLA FONTS, BAKGRUNDSFÄRGER, ROOT ETC HAR VI HÄR*/
+/*Se video: Umbraco - "dynamisk navigering" från 09:00. */
+@import "tailwindcss";
+
+
+body {
+    background-color: #F7F8F9;
+}

@@ -1,0 +1,20 @@
+﻿
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+
+<!-- DENNA DELEN SKRIVS FÖR ATT DET ÄR EN GLOBAL SOM SKA SYNAS PÅ ALLA SIDOR -->
+@{
+    var rootContent = Umbraco.ContentAtRoot().FirstOrDefault();
+    var links = rootContent?.Value<IEnumerable<Umbraco.Cms.Core.Models.Link>>("navbarCategory");
+}
+
+<!-- LÄNKARNA SOM SKA VARA I NAVBAREN START -->
+<div>
+    @if (links != null) {
+        @foreach (var link in links) {
+            <a href="@link.Url">@link.Name</a>
+        }
+    }
+</div>
+<!-- LÄNKARNA SOM SKA VARA I NAVBAREN SLUT -->
