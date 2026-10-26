@@ -5,50 +5,59 @@
 }
 
 @* Content ArtikelPage. *@
-<article>
-    <div>
-		<h1>@Model.ArticleTitle</h1>
-	</div>
+<section>
+	<article class="">
+		<div>
+			<h1>@Model.ArticleTitle</h1>
+		</div>
 
-	<div>
-		@if (Model.AuthorImage != null)
-		{
-			<img src="@Model.AuthorImage.Url()" alt="Författarbild" />
-		}
+		<div>
+			@if (Model.AuthorImage != null)
+			{
+				<img src="@Model.AuthorImage.Url()" alt="Författarbild" />
+			}
 
-		<p>@Model.AuthorName</p>
-	</div>
+			<p>@Model.AuthorName</p>
+		</div>
 
     
-	@* CreateDate ändras till publiceringsdatum i Umbraco kanske? Jag ska kolla upp det sen. *@
-    <div>
+		@* CreateDate ändras till publiceringsdatum i Umbraco kanske? Jag ska kolla upp det sen. *@
+		<div>
 		
-		<p>Publicerad: @Model.CreateDate.ToString("yyyy-MM-dd HH:mm")</p>
-	</div>
+			<p>Publicerad: @Model.CreateDate.ToString("yyyy-MM-dd HH:mm")</p>
+		</div>
 
 
-	<div>
-		@if (Model.MainImage != null)
-		{
-			<img src="@Model.MainImage.Url()" alt="Huvudbild" />
-		}
+		<div>
+			@if (Model.MainImage != null)
+			{
+				<img src="@Model.MainImage.Url()" alt="Huvudbild" />
+			}
         
-        @if (!string.IsNullOrEmpty(Model.ImageCaption))
-		{
-			<p>@Model.ImageCaption</p>
-		}
-	</div>
+			@if (!string.IsNullOrEmpty(Model.ImageCaption))
+			{
+				<p>@Model.ImageCaption</p>
+			}
+		</div>
 
-	<div>
-		@if (!string.IsNullOrEmpty(Model.Summary))
-		{
-			<p>@Model.Summary</p>
-		}
-	</div>
+		<div>
+			@if (!string.IsNullOrEmpty(Model.Summary))
+			{
+				<p>@Model.Summary</p>
+			}
+		</div>
 
-	@* Här används Rich Text Editor, så HTML-taggar behövs inte här. *@
-	<div>
-		@Model.BodyText
-	</div>
+		@* Här används Rich Text Editor, så HTML-taggar behövs inte här. *@
+		<div>
+			@Model.BodyText
+		</div>
 
-</article>
+	</article>
+
+
+	@* Senaste nytt *@
+	<aside>
+		@* Senaste nytt *@
+	</aside>
+
+</section>
