@@ -1,9 +1,137 @@
 ﻿/*TAILWIND HÄR INNE*/
-/* ALLA FONTS, BAKGRUNDSFÄRGER, ROOT ETC HAR VI HÄR*/
+/* ALLA FONTS, BAKGRUNDSFÄRGER, ROOT, DYNAMISKA SAKER ETC HAR VI HÄR */
 /*Se video: Umbraco - "dynamisk navigering" från 09:00. */
+
+/* Starta tailwind så ändringar uppdateras npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --watch*/
 @import "tailwindcss";
 
+@theme {
 
-body {
-    background-color: #F7F8F9;
+    /* Färger */
+    --color-page: #F7F8F9;
+    --color-accent: #FF0000;
+    --color-text-main: #000000;
+    --color-text-muted: #7E7E7E;
+
+    /* Typsnitt */
+    --font-heading: "Frank Ruhl Libre", Georgia, "Times New Roman", serif;
+    --font-body: "Lora", Georgia, "Times New Roman", serif;
+    --font-meta: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+
+@layer components {
+
+    /* MOBIL */
+
+    /* Artikelrubrik */
+    .article-title {
+        @apply font-heading font-bold text-text-main;
+        font-size: 1.75rem;
+    }
+
+    /* Underrubrik */
+    .article-subtitle {
+        @apply font-body font-semibold text-text-main;
+        font-size: 1.125rem;
+    }
+
+    /* Ingress */
+    .article-ingress {
+        @apply font-body font-bold text-text-main;
+        font-size: 1rem;
+    }
+
+    /* Brödtext */
+    .article-body {
+        @apply font-body font-normal text-text-main;
+        font-size: 1rem;
+    }
+
+    /* Kategoritext */
+    .article-category {
+        @apply font-meta font-bold text-accent;
+        font-size: 0.875rem;
+    }
+
+    /* Författarnamn */
+    .article-author {
+        @apply font-meta font-medium text-text-muted;
+        font-size: 0.875rem;
+    }
+
+    /* Publiceringsdatum */
+    .article-date {
+        @apply font-meta font-normal text-text-muted;
+        font-size: 0.75rem;
+    }
+
+
+    /*  IPAD  */
+
+    @media (min-width: 768px) {
+
+        .article-title {
+            font-size: 2.5rem;
+        }
+
+        .article-subtitle {
+            font-size: 1.25rem;
+        }
+
+        .article-ingress {
+            font-size: 1.125rem;
+        }
+
+        .article-body {
+            font-size: 1.125rem;
+        }
+
+        .article-category {
+            font-size: 1rem;
+        }
+
+        .article-author {
+            font-size: 1rem;
+        }
+
+        .article-date {
+            font-size: 0.875rem;
+        }
+    }
+
+
+    /* DESKTOP */
+
+    @media (min-width: 1024px) {
+
+        .article-title {
+            font-size: 3.125rem;
+        }
+
+        .article-subtitle {
+            font-size: 1.5rem;
+        }
+
+        .article-ingress {
+            font-size: 1.25rem;
+        }
+
+        .article-body {
+            font-size: 1.25rem;
+        }
+
+        .article-category {
+            font-size: 1rem;
+        }
+
+        .article-author {
+            font-size: 1rem;
+        }
+
+        .article-date {
+            font-size: 0.875rem;
+        }
+    }
 }
