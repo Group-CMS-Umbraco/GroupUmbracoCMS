@@ -1,1 +1,14 @@
-﻿/*TRADITIONELL CSS HÄR INNE*/
+﻿
+/* Global styling som "regler" för vad som ska gälla för hela sidan, padding och marginaler osv*/
+
+
+body {
+    background-color: var(--color-page);
+    color: #111111;
+    font-family: var(--font-body);
+}
+
+/* Rubriker */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+}
