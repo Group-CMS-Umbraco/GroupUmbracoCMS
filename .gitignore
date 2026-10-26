@@ -482,6 +482,6 @@ umbraco-package-schema.json
 /umbraco/Logs/
 
 # Media files
-/wwwroot/media/
+# /wwwroot/media/
 /appsettings.json
 /appsettings.Development.json
