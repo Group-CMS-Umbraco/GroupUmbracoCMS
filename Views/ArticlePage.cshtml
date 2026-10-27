@@ -4,30 +4,62 @@
 	Layout = "mainLayout.cshtml";
 }
 
+@* Tillfällig css-lösning efter 2 dagars felsökning av Tailwind. *@
+<style>
+	/* Mobil och surfplatta */
+	.article-wrapper {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+	/* Mellanrum runt rubriker */
+	.article-body p {
+		margin-bottom: 1rem;
+	}
+
+	/* Desktop */
+	@@media (min-width: 1024px) {
+		.article-wrapper {
+			display: grid;
+			grid-template-columns: 1.75fr 1fr;
+		}
+	}
+</style>
+
+
 @* Content ArtikelPage. *@
-<section>
-	<article class="">
-		<div>
+
+<section class="article-wrapper" style="padding: 1.5rem;">
+
+	@* rounded-xl fungerar inte, class saknas i output.css. *@
+	<article class="px-4 py-6 bg-white" style="border-radius: 1rem; border: 2px solid red;">
+
+		<div style="margin-bottom: 1.8rem;">
 			<h1 class="article-title">@Model.ArticleTitle</h1>
 		</div>
 
-		<div>
+		<div class="flex items-center gap-2" style="margin-bottom: 1rem;">
 			@if (Model.AuthorImage != null)
 			{
-				<img src="@Model.AuthorImage.Url()" alt="Författarbild" />
+				<img src="@Model.AuthorImage.Url()" alt="Författarbild" class="w-8 h-8 rounded-full object-cover" />
+			} 
+            else
+			{
+				<div class="w-8 h-8 rounded-full bg-gray-300"></div>
 			}
 
-			<p>@Model.AuthorName</p>
+			<p class="article-author">@Model.AuthorName</p>
 		</div>
 
     
-		@* CreateDate ändras till publiceringsdatum i Umbraco kanske? Jag ska kolla upp det sen. *@
+		@* PublishDate funkar inte, antingen CreateDate eller UpdateDate kan användas. *@
 		<div>
 		
-			<p>Publicerad: @Model.CreateDate.ToString("yyyy-MM-dd HH:mm")</p>
+			<p class="article-date">Uppdaterad: @Model.UpdateDate.ToString("yyyy-MM-dd HH:mm")</p>
 		</div>
 
-
+		
+		@* style="width: 100%; max-width: 100%; height: auto; display: block;" *@
 		<div>
 			@if (Model.MainImage != null)
 			{
@@ -40,7 +72,7 @@
 			}
 		</div>
 
-		<div>
+		<div class="article-ingress" style="margin-top: 1.2rem;">
 			@if (!string.IsNullOrEmpty(Model.Summary))
 			{
 				<p>@Model.Summary</p>
@@ -48,7 +80,7 @@
 		</div>
 
 		@* Här används Rich Text Editor, så HTML-taggar behövs inte här. *@
-		<div>
+		<div class="article-body" style="margin: 0.8rem 0;">
 			@Model.BodyText
 		</div>
 
