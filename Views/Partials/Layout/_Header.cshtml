@@ -6,6 +6,7 @@
 <!-- DENNA DELEN SKRIVS FÖR ATT DET ÄR EN GLOBAL SOM SKA SYNAS PÅ ALLA SIDOR -->
 @{
     var rootContent = Umbraco.ContentAtRoot().FirstOrDefault();
+    var logo = Umbraco.MediaAtRoot().SelectMany(x => x.DescendantsOrSelf()).FirstOrDefault(x => x.Name == "Nordpunktfull");
     var links = rootContent?.Value<IEnumerable<Umbraco.Cms.Core.Models.Link>>("navbarCategory");
 }
 
@@ -15,13 +16,21 @@
 </div>
 
 
+<!-- LOGO -->
+<div class="p-2">
+    <img src="@logo?.Url()" alt="Nordpunkt Logo" class="h-9 w-auto" />
+</div>
 
 
-<div>
+
+<!-- GRADIENT-->
+<div class="bg-gradient-to-r from-[#173A5E] to-[#362C48] p-3">
+    <div class="flex justify-center items-center space-x-8">
     @if (links != null) {
         @foreach (var link in links) {
-            <a href="@link.Url">@link.Name</a>
+                <a href="@link.Url" class="text-white font-medium hover:underline">@link.Name</a>
         }
     }
 </div>
 <!-- LÄNKARNA SOM SKA VARA I NAVBAREN SLUT -->
+</div> <!-- GRADIENT AVSLUT-->
