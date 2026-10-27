@@ -7,8 +7,30 @@
     <div>
 
         <div>
-            <label> asp-for="Email"></label>
-            <input asp-for="Email" />
+            <label> asp-for="Email"</label>
+            <input asp-for="Email" type="text" placeholder="@Html.DisplayNameFor(x => x.Email)"  />
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div>
+        
+            <label> asp-for="Category" class="sr-only"</label>
+
+            <div class="relative">
+                <select asp-for="Category" class="appearence-none w-full p-3 pr-10 last\:border-r ">    
+                    <option value="" disabled hidden selected>Select a category</option>
+                    <option value="Nöje">Nöje</option>
+                    <option value="Kultur">Kultur</option>
+                    <option value="Sport">Sport</option>
+                </select>
+
+                <span> class="pointer-events-none absolute right-3 inset-y-0 flex items-center"
+                       
+                </span>
+
+            </div>
+            <label> asp-for="Email"</label>
+            <input asp-for="Email" type="text" placeholder="@Html.DisplayNameFor(x => x.Email)" />
             <span asp-validation-for="Email"></span>
         </div>
 
