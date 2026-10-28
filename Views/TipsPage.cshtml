@@ -1,21 +1,18 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using GroupUmbracoCMS.ViewModels
+@using Umbraco.Cms.Web.Common.PublishedModels
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TipsPage>
 @{
-	Layout = "mainLayout.cshtml";
+    Layout = "mainLayout.cshtml";
 }
 
+<section class="bg-gray-50 px-4 py-6 sm:py-12">
+    <div class="mx-auto max-w-3xl rounded-xl bg-white px-4 py-8 shadow-sm sm:px-10">
+        <div class="mx-auto max-w-md">
+            <img src="/media/2fujwsvz/nordpunktmini.svg" alt="" class="mx-auto h-20 w-auto sm:h-24" />
 
+            @(await Html.GetBlockListHtmlAsync(Model.NewstipSection))
 
-<section>
-
-	<div>
-
-
-
-
-
-	</div>
-
-
+            @await Html.PartialAsync("~/Views/Partials/Forms/_NewstipForm.cshtml", new NewstipFormViewModel())
+        </div>
+    </div>
 </section>
-<h1>Tips sidan </h1>
