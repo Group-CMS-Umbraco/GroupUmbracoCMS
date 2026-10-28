@@ -26,11 +26,11 @@ namespace GroupUmbracoCMS.Controllers
             var result = _newstipSubmissions.SaveNewstipRequest(model);
             if (!result)
             {
-                TempData["NewstipFormError"] = "There was an error processing your request. Please try again later.";
+                TempData["NewstipFormError"] = true;
                 return RedirectToCurrentUmbracoPage();
             }
 
-            TempData["NewstipFormSuccess"] = "Thank you for your submission! We will review your request and get back to you if necessary.";
+            TempData["NewstipFormSuccess"] = true;
 
             return RedirectToCurrentUmbracoPage();
         }
