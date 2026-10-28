@@ -1,0 +1,50 @@
+﻿@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Extensions
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+
+
+<!-- SENASTE NYTT KOMPONENT -->
+
+@{
+    var articles = Model
+        .Descendants()
+        .Where(x => x.ContentType.Alias == "articlePage")
+        .OrderByDescending(x => x.UpdateDate)
+        .Take(5)
+        .ToList();
+};
+
+<section>
+
+    <div>
+        <h3>Senaste nytt</h3>
+    </div>
+    <div>
+        @if (articles.Any())
+        {
+            <ul>
+                @foreach (var article in articles)
+                {
+                    var title = article.Value<string>("articleTitle") ?? article.Name;
+                    <li>
+                        <span></span>
+
+                        <time>
+                            @article.UpdateDate.ToString("HH:mm")
+                        </time>
+
+                        <a href="@article.Url()">
+                            @title
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Inga nyheter finns tillgängliga.</p>
+        }
+    </div>
+
+</section>
