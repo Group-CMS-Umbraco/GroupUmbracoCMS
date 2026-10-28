@@ -1,4 +1,5 @@
-﻿using GroupUmbracoCMS.ViewModels;
+﻿using GroupUmbracoCMS.Services;
+using GroupUmbracoCMS.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
@@ -10,11 +11,9 @@ using Umbraco.Cms.Web.Website.Controllers;
 
 namespace GroupUmbracoCMS.Controllers
 {
-    public class FormController : SurfaceController
+    public class FormController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider, NewstipSubmissionService newstipSubmissions) : SurfaceController(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
     {
-        public FormController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
-        {
-        }
+        private readonly NewstipSubmissionService _newstipSubmissions = newstipSubmissions;
 
         public IActionResult HandleNewstipForm(NewstipFormViewModel model)
         {
@@ -23,7 +22,13 @@ namespace GroupUmbracoCMS.Controllers
                 
                 return CurrentUmbracoPage();
             }
-            
+
+            var result = _newstipSubmissions.SaveNewstipRequest(model);
+            if (!result)
+            {
+                return RedirectToCurrentUmbracoPage();
+            }
+
             return RedirectToCurrentUmbracoPage();
         }
     }
