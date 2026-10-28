@@ -22,29 +22,29 @@
             <div class="w-full lg:w-2/3 bg-white p-4 rounded-[12px] shadow-md">
 
     @foreach (var article in Model.Children<ArticlePage>())
-    {
-        <div>
-            <!-- 1. MainImage/Bild -->
-            <img src="@article.MainImage?.Url()" class="w-full h-56 object-cover mb-4 rounded-[12px]" />
+                {
+                    <div>
+                        <!-- 1. MainImage/Bild -->
+                        <img src="@article.MainImage?.Url()" class="w-full h-56 object-cover mb-4 rounded-[12px]" />
 
-            <!-- 2. Title -->
-            <h2>
-                <a href="@article.Url()" class="text-[2.5rem] font-bold leading-tight hover:underline">
-                @article.ArticleTitle</a>
-            </h2>
+                        <!-- 2. Title -->
+                        <h2>
+                            <a href="@article.Url()" class="text-[2.5rem] font-bold leading-tight hover:underline">
+                                @article.ArticleTitle</a>
+                        </h2>
 
-@await Html.PartialAsync("Layout/_LatestNews", Model)
-
-
+                        @await Html.PartialAsync("Layout/_LatestNews", Model)
 
 
 
 
-            <!-- HÖGER SIDA: Senaste Nytt (Richard) -->
-            <div class="w-full lg:w-1/3 border-2 border-black rounded-[12px]">
-                @await Html.PartialAsync("Layout/_SenasteNytt")
-            </div>
 
-        </div>
-    </div>
-</div>
+
+                        <!-- HÖGER SIDA: Senaste Nytt (Richard) -->
+                        <div class="w-full lg:w-1/3 border-2 border-black rounded-[12px]">
+                            @await Html.PartialAsync("Layout/_LatestNews")
+                        </div>
+
+                    </div>              
+              
+                }
