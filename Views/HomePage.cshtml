@@ -1,4 +1,4 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<HomePage>
 @{
 	Layout = "mainLayout.cshtml";
@@ -33,13 +33,7 @@
                 @article.ArticleTitle</a>
             </h2>
 
-            <!-- 3. Subheading/Underrubrik -->
-                <h5 class="text-[1.2rem] text-black pt-2">
-                    @article.Subheading
-                </h5>
-        </div>
-        }
-</div>
+@await Html.PartialAsync("Layout/_LatestNews", Model)
 
 
 
