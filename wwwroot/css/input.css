@@ -51,7 +51,7 @@
 
     /* Kategoritext */
     .article-category {
-        @apply font-meta font-bold text-accent;
+        @apply font-meta font-black text-text-main;
         font-size: 0.875rem;
     }
 
@@ -63,7 +63,7 @@
 
     /* Publiceringsdatum */
     .article-date {
-        @apply font-meta font-normal text-text-muted;
+        @apply font-meta font-bold text-text-muted;
         font-size: 0.75rem;
     }
 

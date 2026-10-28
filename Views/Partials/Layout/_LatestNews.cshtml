@@ -13,12 +13,12 @@
         .OrderByDescending(x => x.UpdateDate)
         .Take(5)
         .ToList();
-};
+}
 
-<section>
+<section class="bg-white rounded-tl-[50px] rounded-br-[50px] shadow-[0_0_12px_2px_rgba(0,0,0,0.25)] overflow-hidden">
 
-    <div>
-        <h3>Senaste nytt</h3>
+    <div class="bg-accent rounded-tl-[50px] rounded-br-[50px] text-page pl-9 pr-12 py-2 w-1/2">
+        <h3 class="text-white article-category text-3xl whitespace-nowrap">Senaste nytt</h3>
     </div>
     <div>
         @if (articles.Any())
@@ -27,16 +27,28 @@
                 @foreach (var article in articles)
                 {
                     var title = article.Value<string>("articleTitle") ?? article.Name;
-                    <li>
-                        <span></span>
 
-                        <time>
-                            @article.UpdateDate.ToString("HH:mm")
-                        </time>
+                    <li class="mt-4 ml-4">
+                        <div class="flex justify-center">
+                            <!--Red Pin-->
+                            <div class="flex flex-col items-center gap-1 mr-2">
+                                <span class="w-4 h-4 bg-accent rounded-full shrink-0"></span>
+                                <div class="w-[2px] flex-1 min-h-12 bg-gray-300"></div>
+                            </div>
+                            <!--Article info-->
+                            <div>
+                                <div class="flex flex-col mb-2">
+                                    <time class="article-date">
+                                        @article.UpdateDate.ToString("HH:mm")
+                                    </time>
 
-                        <a href="@article.Url()">
-                            @title
-                        </a>
+                                    <a href="@article.Url()" class="article-category">
+                                        @title
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                     </li>
                 }
             </ul>
