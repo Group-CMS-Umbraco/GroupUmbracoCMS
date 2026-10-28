@@ -18,20 +18,20 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "newtipSubmissions"
-	/// <summary>Newtip submissions</summary>
-	public partial interface INewtipSubmissions : IPublishedContent
+	// Mixin Content Type with alias "newstipSubmissions"
+	/// <summary>Newstip submissions</summary>
+	public partial interface INewstipSubmissions : IPublishedContent
 	{
 	}
 
-	/// <summary>Newtip submissions</summary>
-	[PublishedModel("newtipSubmissions")]
-	public partial class NewtipSubmissions : PublishedContentModel, INewtipSubmissions
+	/// <summary>Newstip submissions</summary>
+	[PublishedModel("newstipSubmissions")]
+	public partial class NewstipSubmissions : PublishedContentModel, INewstipSubmissions
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
-		public new const string ModelTypeAlias = "newtipSubmissions";
+		public new const string ModelTypeAlias = "newstipSubmissions";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
@@ -40,14 +40,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<NewtipSubmissions, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<NewstipSubmissions, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public NewtipSubmissions(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public NewstipSubmissions(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;

@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Newstip Request</summary>
 	[PublishedModel("newstipRequest")]
-	public partial class NewstipRequest : PublishedContentModel, INewtipSubmissions
+	public partial class NewstipRequest : PublishedContentModel, INewstipSubmissions
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
