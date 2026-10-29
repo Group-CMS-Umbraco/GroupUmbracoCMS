@@ -24,15 +24,20 @@
 			grid-template-columns: 1.75fr 1fr;
 		}
 	}
-</style>
 
+	@* Tillfällig css-lösning för bakgrundsfärgen på ArticlePage.
+       Kan ses över senare tillsammans med gemensamma css ?????? *@
+	body {
+		background-color: #F7F8F9;
+	}
+</style>
 
 @* Content ArtikelPage. *@
 
 <section class="article-wrapper" style="padding: 1.5rem;">
 
 	@* rounded-xl fungerar inte, class saknas i output.css. *@
-	<article class="px-4 py-6 bg-white" style="border-radius: 1rem; border: 2px solid red;">
+	<article class="px-4 py-6 bg-white" style="border-radius: 1rem;">
 
 		<div style="margin-bottom: 1.8rem;">
 			<h1 class="article-title">@Model.ArticleTitle</h1>
@@ -51,11 +56,8 @@
 			<p class="article-author">@Model.AuthorName</p>
 		</div>
 
-    
-		@* PublishDate funkar inte, antingen CreateDate eller UpdateDate kan användas. *@
 		<div>
-		
-			<p class="article-date">Uppdaterad: @Model.UpdateDate.ToString("yyyy-MM-dd HH:mm")</p>
+			<p class="article-date">Publicerad: @Model.Date.ToString("yyyy-MM-dd")</p>
 		</div>
 
 		
