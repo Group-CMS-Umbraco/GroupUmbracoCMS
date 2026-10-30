@@ -485,3 +485,6 @@ umbraco-package-schema.json
 # /wwwroot/media/
 /appsettings.json
 /appsettings.Development.json
+
+# Github ignorerar genererade filer!
+umbraco/models/*.generated.csumbraco/models/*.generated.cs
