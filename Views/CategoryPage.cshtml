@@ -52,7 +52,7 @@
 else
 {
     @* User Story B1: TOM KATEGORISIDA – centrerad vy och responsiv layout enligt Figma *@
-    <main class="flex min-h-[55vh] w-full items-center justify-center bg-white px-4 py-16 sm:px-6 lg:px-8">
+    <main class="flex min-h-[90vh] w-full items-center justify-center bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div class="w-full max-w-md text-center">
 
             @* Rubrik hämtad från CMS *@
@@ -65,10 +65,13 @@ else
                 @message
             </p>
 
-            @* Navigeringsknapp tillbaka till startsidan *@
+            @* Navigeringsknapp tillbaka till startsidan. Navigeringen är inte hårdkodad.
+            URL:en till startsidan hämtas dynamiskt från Umbracos innehållsträd med Model.Root()?.Url() ?? "/".
+            Knappen och dess text (@buttonText) styrs också helt från CMS via Document Type-egenskaper så att
+            redaktören kan ändra den utan att röra koden. *@
             <div class="mt-8">
                 <a href="@homeUrl"
-                   class="inline-flex w-full items-center justify-center rounded-full bg-[#0b1f54] px-8 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#07153b] sm:w-auto">
+                   class="inline-flex w-full items-center justify-center rounded-full bg-[#0b1f54] px-16 py-4 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0a167a] sm:w-auto">
                     @buttonText
                 </a>
             </div>
