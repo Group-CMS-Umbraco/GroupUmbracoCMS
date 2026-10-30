@@ -87,8 +87,10 @@
 
 
 	@* Senaste nytt section*@
-	<aside>
-		@* Senaste nytt *@
-	</aside>
+	
+	<div>
+		@await Html.PartialAsync("Layout/_latestnews")
+	</div>
+	
 
 </section>
