@@ -1,10 +1,19 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ArticlePage>
 @{
 	Layout = "mainLayout.cshtml";
+
+    var articleTitle = Model.Value<string>("articleTitle");
+    var authorName = Model.Value<string>("authorName");
+    var articleDate = Model.Value<DateTime?>("date") ?? Model.CreateDate;
+    var authorImage = Model.Value<IPublishedContent>("authorImage");
+    var mainImage = Model.Value<IPublishedContent>("mainImage");
+    var imageCaption = Model.Value<string>("imageCaption");
+    var summary = Model.Value<string>("summary");
+
+    var bodyText = Model.Value("bodyText");
 }
 
-@* Tillfällig css-lösning efter 2 dagars felsökning av Tailwind. *@
 <style>
 	/* Mobil och surfplatta */
 	.article-wrapper {
@@ -24,66 +33,54 @@
 			grid-template-columns: 1.75fr 1fr;
 		}
 	}
-
-	@* Tillfällig css-lösning för bakgrundsfärgen på ArticlePage.
-       Kan ses över senare tillsammans med gemensamma css ?????? *@
-	body {
-		background-color: #F7F8F9;
-	}
 </style>
-
-@* Content ArtikelPage. *@
 
 <section class="article-wrapper" style="padding: 1.5rem;">
 
-	@* rounded-xl fungerar inte, class saknas i output.css. *@
 	<article class="px-4 py-6 bg-white" style="border-radius: 1rem;">
 
 		<div style="margin-bottom: 1.8rem;">
-			<h1 class="article-title">@Model.ArticleTitle</h1>
+			<h1 class="article-title">@articleTitle</h1>
 		</div>
 
 		<div class="flex items-center gap-2" style="margin-bottom: 1rem;">
-			@if (Model.AuthorImage != null)
+			@if (authorImage != null)
 			{
-				<img src="@Model.AuthorImage.Url()" alt="Författarbild" class="w-8 h-8 rounded-full object-cover" />
+				<img src="@authorImage.Url()" alt="Författarbild" class="w-8 h-8 rounded-full object-cover" />
 			} 
             else
 			{
 				<div class="w-8 h-8 rounded-full bg-gray-300"></div>
 			}
 
-			<p class="article-author">@Model.AuthorName</p>
+			<p class="article-author">@authorName</p>
 		</div>
 
 		<div>
-			<p class="article-date">Publicerad: @Model.Date.ToString("yyyy-MM-dd")</p>
+			<p class="article-date">Publicerad: @articleDate.ToString("yyyy-MM-dd HH:mm")</p>
 		</div>
 
-		
-		@* style="width: 100%; max-width: 100%; height: auto; display: block;" *@
 		<div>
-			@if (Model.MainImage != null)
+			@if (mainImage != null)
 			{
-				<img src="@Model.MainImage.Url()" alt="Huvudbild" />
+				<img src="@mainImage.Url()" alt="Huvudbild" />
 			}
         
-			@if (!string.IsNullOrEmpty(Model.ImageCaption))
+			@if (!string.IsNullOrEmpty(imageCaption))
 			{
-				<p>@Model.ImageCaption</p>
+				<p>@imageCaption</p>
 			}
 		</div>
 
 		<div class="article-ingress" style="margin-top: 1.2rem;">
-			@if (!string.IsNullOrEmpty(Model.Summary))
+			@if (!string.IsNullOrEmpty(summary))
 			{
-				<p>@Model.Summary</p>
+				<p>@summary</p>
 			}
 		</div>
 
-		@* Här används Rich Text Editor, så HTML-taggar behövs inte här. *@
 		<div class="article-body" style="margin: 0.8rem 0;">
-			@Model.BodyText
+			@bodyText
 		</div>
 
 	</article>
