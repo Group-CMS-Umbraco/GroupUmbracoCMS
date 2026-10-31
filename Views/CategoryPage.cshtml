@@ -28,8 +28,8 @@
         buttonText = "Tillbaka till startsidan";
     }
     
-    // Hämtar URL:en till startsidan.Den hämtar rotnoden dynamiskt från innehållsträdet via Model.Root() och
-    //  tar ut dess URL med .Url() för knappen. Operatorerna ?. och ?? säkerställer en säker fallback till "/" så att sidan aldrig kraschar vid fel.
+    // Hämtar URL:en till startsidan.Den hämtar rotnoden  via Model.Root()
+    
     var homeUrl = Model.Root()?.Url() ?? "/";
     
 }   
