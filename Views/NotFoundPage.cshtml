@@ -35,13 +35,15 @@
         </a>
 
 
-        @if (errorImage != null)
+        @if (errorImage != null && !string.IsNullOrEmpty(errorImage.Url()))
         {
-            <img src="@errorImage.Url()"
-                 alt="@errorTitle"
-                 class="mb-8 max-w-[280px] md:max-w-[340px] h-auto object-contain" />
+            <div class="mb-8 flex justify-center">
+                <img src="@errorImage.Url()" 
+                     alt="" 
+                     aria-hidden="true"
+                     class="max-w-[280px] md:max-w-[340px] h-auto object-contain" />
+            </div>
         }
-
         
 
         
