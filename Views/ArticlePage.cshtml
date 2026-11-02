@@ -2,62 +2,95 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ArticlePage>
 @{
 	Layout = "mainLayout.cshtml";
+
+    var articleTitle = Model.Value<string>("articleTitle");
+    var authorName = Model.Value<string>("authorName");
+    var articleDate = Model.Value<DateTime?>("date") ?? Model.CreateDate;
+    var authorImage = Model.Value<IPublishedContent>("authorImage");
+    var mainImage = Model.Value<IPublishedContent>("mainImage");
+    var imageCaption = Model.Value<string>("imageCaption");
+    var summary = Model.Value<string>("summary");
+
+    var bodyText = Model.Value("bodyText");
 }
 
-@* Content ArtikelPage. *@
-<section>
-	<article class="">
-		<div>
-			<h1 class="article-title">@Model.ArticleTitle</h1>
+<style>
+	/* Mobil och surfplatta */
+	.article-wrapper {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+	/* Mellanrum runt rubriker */
+	.article-body p {
+		margin-bottom: 1rem;
+	}
+
+	/* Desktop */
+	@@media (min-width: 1024px) {
+		.article-wrapper {
+			display: grid;
+			grid-template-columns: 1.75fr 1fr;
+		}
+	}
+</style>
+
+<section class="article-wrapper" style="padding: 1.5rem;">
+
+	<article class="px-4 py-6 bg-white" style="border-radius: 1rem;">
+
+		<div style="margin-bottom: 1.8rem;">
+			<h1 class="article-title">@articleTitle</h1>
 		</div>
 
-		<div>
-			@if (Model.AuthorImage != null)
+		<div class="flex items-center gap-2" style="margin-bottom: 1rem;">
+			@if (authorImage != null)
 			{
-				<img src="@Model.AuthorImage.Url()" alt="Författarbild" />
+				<img src="@authorImage.Url()" alt="Författarbild" class="w-8 h-8 rounded-full object-cover" />
+			} 
+            else
+			{
+				<div class="w-8 h-8 rounded-full bg-gray-300"></div>
 			}
 
-			<p>@Model.AuthorName</p>
+			<p class="article-author">@authorName</p>
 		</div>
 
-    
-		@* CreateDate ändras till publiceringsdatum i Umbraco kanske? Jag ska kolla upp det sen. *@
 		<div>
-		
-			<p>Publicerad: @Model.CreateDate.ToString("yyyy-MM-dd HH:mm")</p>
+			<p class="article-date">Publicerad: @articleDate.ToString("yyyy-MM-dd HH:mm")</p>
 		</div>
 
-
 		<div>
-			@if (Model.MainImage != null)
+			@if (mainImage != null)
 			{
-				<img src="@Model.MainImage.Url()" alt="Huvudbild" />
+				<img src="@mainImage.Url()" alt="Huvudbild" />
 			}
         
-			@if (!string.IsNullOrEmpty(Model.ImageCaption))
+			@if (!string.IsNullOrEmpty(imageCaption))
 			{
-				<p>@Model.ImageCaption</p>
+				<p>@imageCaption</p>
 			}
 		</div>
 
-		<div>
-			@if (!string.IsNullOrEmpty(Model.Summary))
+		<div class="article-ingress" style="margin-top: 1.2rem;">
+			@if (!string.IsNullOrEmpty(summary))
 			{
-				<p>@Model.Summary</p>
+				<p>@summary</p>
 			}
 		</div>
 
-		@* Här används Rich Text Editor, så HTML-taggar behövs inte här. *@
-		<div>
-			@Model.BodyText
+		<div class="article-body" style="margin: 0.8rem 0;">
+			@bodyText
 		</div>
 
 	</article>
 
 
 	@* Senaste nytt section*@
-	<aside>
-		@* Senaste nytt *@
-	</aside>
+	
+	<div>
+		@await Html.PartialAsync("Layout/_latestnews")
+	</div>
+	
 
 </section>

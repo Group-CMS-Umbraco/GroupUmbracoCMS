@@ -1,0 +1,102 @@
+﻿@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Extensions
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+
+@{
+    // Hämtar Home-sidan
+    var home = Umbraco.ContentAtRoot().FirstOrDefault();
+
+
+    // Hämtar de fem senast skapade artiklarna
+    var articles = home?
+        .Descendants()
+        .Where(x => x.ContentType.Alias == "articlePage")
+        .OrderByDescending(x => x.UpdateDate)
+        .Take(5)
+        .ToList() ?? new List<IPublishedContent>();
+}
+
+<!-- PHONE AND IPAD -->
+<section class="block lg:hidden w-full">
+
+    @if (articles.Any())
+    {
+        <ul class="flex flex-col gap-3">
+            @foreach (var article in articles)
+            {
+                var title = article.Value<string>("articleTitle") ?? article.Name;
+
+                <li class="bg-white shadow-md p-3 md:p-4">
+
+                    <a href="@article.Url()" class="block font-meta font-black text-text-main text-xl md:text-2xl leading-tight">
+
+                        <span class="text-accent">JUST NU:</span>
+                        @title
+
+                    </a>
+
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Inga nyheter finns tillgängliga.</p>
+    }
+
+</section>
+
+
+<!-- DESKTOP -->
+<section class="hidden lg:block bg-white rounded-tl-[50px] rounded-br-[50px] shadow-[0_0_12px_2px_rgba(0,0,0,0.25)] overflow-hidden w-full max-w-[624px] h-[758px]">
+
+    <div class="bg-accent rounded-tl-[50px] rounded-br-[50px] w-1/2 flex justify-center items-center">
+        <h3 class="text-white article-category text-2xl whitespace-nowrap pb-2">
+            Senaste nytt
+        </h3>
+    </div>
+
+    <div>
+        @if (articles.Any())
+        {
+            <ul>
+                @foreach (var article in articles)
+                {
+                    var title = article.Value<string>("articleTitle") ?? article.Name;
+
+                    <li class="mt-4 ml-4">
+                        <div class="flex items-start">
+
+                            <!-- Red Pin -->
+                            <div class="flex flex-col items-center gap-1 mr-2">
+                                <span class="w-4 h-4 bg-accent rounded-full shrink-0"></span>
+                                <div class="w-[2px] flex-1 min-h-12 bg-gray-300"></div>
+                            </div>
+
+                            <!-- Article info -->
+                            <div>
+                                <div class="flex flex-col mb-2">
+
+                                    <time class="article-date">
+                                        @article.CreateDate.ToString("HH:mm")
+                                    </time>
+
+                                    <a href="@article.Url()" class="article-category">
+                                        @title
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Inga nyheter finns tillgängliga.</p>
+        }
+    </div>
+
+</section>

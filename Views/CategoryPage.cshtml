@@ -1,0 +1,81 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+
+    Layout = "mainLayout.cshtml";
+
+    // 1. Kontrollerar om kategorin har artiklar under sig
+    var articles = Model.Children()?.Where(x => x.IsVisible()).ToList() ?? new List<IPublishedContent>();
+
+    var heading = Model.Value<string>("emptyCategoryHeading");
+    if (string.IsNullOrWhiteSpace(heading))
+    {
+        heading = "Inga artiklar just nu";
+    }   
+
+    var message = Model.Value<string>("emptyCategoryMessage");
+
+    if (string.IsNullOrWhiteSpace(message))
+    {
+        message = "Det finns tyvärr inga publicerade artiklar i den här kategorin för tillfället."; 
+    }
+
+    var buttonText = Model.Value<string>("emptyCategoryButtonText");
+
+    if (string.IsNullOrWhiteSpace(buttonText))
+    {
+        buttonText = "Tillbaka till startsidan";
+    }
+    
+    // Hämtar URL:en till startsidan.Den hämtar rotnoden  via Model.Root()
+    
+    var homeUrl = Model.Root()?.Url() ?? "/";
+    
+}   
+
+@if (articles.Any())
+{
+    @* Visar artiklar när kategorin inte är tom *@
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-900">@Model.Name</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach (var article in articles)
+            {
+                <article class="p-4 border rounded shadow-sm">
+                    <h2 class="text-xl font-bold">@article.Name</h2>
+                </article>
+            }
+        </div>
+    </main>
+}
+else
+{
+    @* User Story B1: TOM KATEGORISIDA – centrerad vy och responsiv layout enligt Figma *@
+    <main class="flex min-h-[90vh] w-full items-center justify-center bg-white px-4 py-16 sm:px-6 lg:px-8">
+        <div class="w-full max-w-md text-center">
+
+            @* Rubrik hämtad från CMS *@
+            <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                @heading
+            </h1>
+
+            @* Förklarande meddelande för besökaren *@
+            <p class="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-gray-700 sm:text-base">
+                @message
+            </p>
+
+            @* Navigeringsknapp tillbaka till startsidan. Navigeringen är inte hårdkodad.
+            URL:en till startsidan hämtas dynamiskt från Umbracos innehållsträd med Model.Root()?.Url() ?? "/".
+            Knappen och dess text (@buttonText) styrs också helt från CMS via Document Type-egenskaper så att
+            redaktören kan ändra den utan att röra koden. *@
+            <div class="mt-8">
+                <a href="@homeUrl"
+                   class="inline-flex w-full items-center justify-center rounded-full bg-[#0b1f54] px-16 py-4 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#0a167a] sm:w-auto">
+                    @buttonText
+                </a>
+            </div>
+
+        </div>
+    </main>
+}
