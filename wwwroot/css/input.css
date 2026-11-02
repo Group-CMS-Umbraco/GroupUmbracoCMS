@@ -4,6 +4,7 @@
 
 /* Starta tailwind så ändringar uppdateras npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --watch*/
 @import "tailwindcss";
+@source "../../Views";
 
 @theme {
 

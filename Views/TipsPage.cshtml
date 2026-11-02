@@ -1,10 +1,10 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using GroupUmbracoCMS.ViewModels
+@using Umbraco.Cms.Web.Common.PublishedModels
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TipsPage>
 @{
-	Layout = "mainLayout.cshtml";
+    Layout = "mainLayout.cshtml";
 }
 
-
-
-
-<h1>Tips sidan</h1>
+<section class="bg-page px-4 py-6 font-meta sm:py-12">
+    @(await Html.GetBlockListHtmlAsync(Model.NewstipSection))
+</section>
