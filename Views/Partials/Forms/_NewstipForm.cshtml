@@ -3,22 +3,14 @@
 @model NewstipFormViewModel
 
 @{
-    var success = TempData["NewstipSuccess"] is true;
     const string field = "w-full rounded border border-gray-300 bg-gray-100 px-3 text-base text-gray-900 outline-none " +
                          "focus:border-[#007BC1] focus:bg-white [&.input-validation-error]:border-red-400";
     const string label = "mb-1 block text-lg font-semibold text-gray-900";
     const string error = "mt-1 block text-xs text-red-500";
 }
 
-@if (success)
-{
-    <div role="status" class="mt-8 rounded border border-green-300 bg-green-50 p-4 text-sm text-green-800">
-        Tack! Ditt tips har skickats till redaktionen.
-    </div>
-}
-else
-{
-    using (Html.BeginUmbracoForm<FormController>(
+
+@using (Html.BeginUmbracoForm<FormController>(
         nameof(FormController.HandleNewstipForm),
         null,
         new { novalidate = "novalidate", id = "newstipForm", @class = "mt-6 space-y-3" }))
@@ -48,7 +40,7 @@ else
         <div>
 
             <label asp-for="Description" class="@label">Beskrivning</label>
-            <textarea asp-for="Description" class="@field h-48 resize-y py-2"></textarea>
+            <textarea asp-for="Description" class="@field h-48 resize-none py-2 md:h-48"></textarea>
             <span asp-validation-for="Description" class="@error"></span>
 
         </div>
@@ -73,6 +65,6 @@ else
                 class="mt-8 h-11 w-full rounded bg-[#0B1B57] text-lg font-semibold text-white hover:bg-[#00669f]">
             Skicka tips
         </button>
-    }
-}
+    }   
+
 

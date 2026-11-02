@@ -66,6 +66,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string NewstipSectionDescription => this.Value<string>(_publishedValueFallback, "newstipSectionDescription");
 
 		///<summary>
+		/// MobileDescription
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("newstipSectionMobileDescription")]
+		public virtual string NewstipSectionMobileDescription => this.Value<string>(_publishedValueFallback, "newstipSectionMobileDescription");
+
+		///<summary>
+		/// MobileTitle
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("newstipSectionMobileTitle")]
+		public virtual string NewstipSectionMobileTitle => this.Value<string>(_publishedValueFallback, "newstipSectionMobileTitle");
+
+		///<summary>
 		/// Title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]

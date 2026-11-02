@@ -8,7 +8,7 @@ public class NewstipFormViewModel
     [EmailAddress(ErrorMessage = "Vänligen ange en giltig emailadress.")]
     public string? Email { get; set; }
 
-    [Required(ErrorMessage = "Vänligen välj en kategori!")]
+    [Required(ErrorMessage = "Vänligen välj ett ämne!")]
     [Display(Name = "Category")]
     public string Category { get; set; } = null!;
 
