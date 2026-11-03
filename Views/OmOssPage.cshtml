@@ -1,9 +1,53 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.OmOssPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks
+@using Umbraco.Cms.Core.Strings
+
+
 @{
 	Layout = "mainLayout.cshtml";
+
+	var aboutPageTitle = Model.Value<string>("aboutTitle");
+	var aboutIntro = Model.Value<string>("aboutIntro");
+	var aboutSections = Model.Value<BlockListModel>("sections");
+
 }
 
+<section class="px-4 py-6">
+	<div class="max-w-5xl mx-auto px-4 py-6 bg-accent rounded-2xl shadow-md">
 
-<div> Om oss sida </div>
+		<div>
+			<h1 class="font-meta font-bold text-2xl md:text-3xl lg:text-4xl text-center">@aboutPageTitle</h1>
+			<p class="font-meta font-medium text-sm text-center">@aboutIntro</p>
+
+		</div>
+
+
+		<section class="px-4 py-6">
+			@if (aboutSections != null)
+			{
+				@foreach (var section in aboutSections)
+				{
+					var aboutCards = section.Content.Value<BlockListModel>("cards");
+
+					<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+						@if (aboutCards != null)
+						{
+							foreach (var card in aboutCards)
+							{
+								var cardTitle = card.Content.Value<string>("cardTitle");
+								var cardText = card.Content.Value<IHtmlEncodedString>("cardText");
+
+                                <div class="bg-gray-200 rounded-2xl p-4">
+									<h2>@cardTitle</h2>
+									@cardText
+                                </div>
+							}
+						}
+					</div>
+				}
+			}
+		</section>
+	</div>
+</section>
