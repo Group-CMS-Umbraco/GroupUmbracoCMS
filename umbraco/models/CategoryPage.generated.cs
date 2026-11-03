@@ -18,7 +18,7 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Category Page</summary>
+	/// <summary>Empty Category Page</summary>
 	[PublishedModel("categoryPage")]
 	public partial class CategoryPage : PublishedContentModel
 	{
