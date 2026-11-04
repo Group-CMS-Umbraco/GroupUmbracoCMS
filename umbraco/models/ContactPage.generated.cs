@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Empty Category Page</summary>
-	[PublishedModel("categoryPage")]
-	public partial class CategoryPage : PublishedContentModel
+	/// <summary>Contact Page</summary>
+	[PublishedModel("contactPage")]
+	public partial class ContactPage : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
-		public new const string ModelTypeAlias = "categoryPage";
+		public new const string ModelTypeAlias = "contactPage";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
@@ -34,14 +34,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<CategoryPage, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<ContactPage, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public CategoryPage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public ContactPage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,27 +50,27 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Empty Category Button Text
+		/// Contact Cards
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("emptyCategoryButtonText")]
-		public virtual string EmptyCategoryButtonText => this.Value<string>(_publishedValueFallback, "emptyCategoryButtonText");
+		[ImplementPropertyType("contactCards")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ContactCards => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "contactCards");
 
 		///<summary>
-		/// Empty Category Heading
+		/// Intro Text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("emptyCategoryHeading")]
-		public virtual string EmptyCategoryHeading => this.Value<string>(_publishedValueFallback, "emptyCategoryHeading");
+		[ImplementPropertyType("introText")]
+		public virtual string IntroText => this.Value<string>(_publishedValueFallback, "introText");
 
 		///<summary>
-		/// Empty Category Message
+		/// Page Title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("emptyCategoryMessage")]
-		public virtual string EmptyCategoryMessage => this.Value<string>(_publishedValueFallback, "emptyCategoryMessage");
+		[ImplementPropertyType("pageTitle")]
+		public virtual string PageTitle => this.Value<string>(_publishedValueFallback, "pageTitle");
 	}
 }
