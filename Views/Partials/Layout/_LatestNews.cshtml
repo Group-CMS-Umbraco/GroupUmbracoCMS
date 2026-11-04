@@ -14,6 +14,11 @@
         .OrderByDescending(x => x.UpdateDate)
         .Take(5)
         .ToList() ?? new List<IPublishedContent>();
+
+    var latestNewsPage = Model.Root()
+    .Descendants()
+    .FirstOrDefault(x =>
+        x.ContentType.Alias == "latestNewsPage");
 }
 
 <!-- PHONE AND IPAD -->
@@ -38,10 +43,18 @@
                 </li>
             }
         </ul>
+        
     }
     else
     {
         <p>Inga nyheter finns tillgängliga.</p>
+    }
+
+    @if(latestNewsPage != null)
+    {
+        <div>
+            <a href="@latestNewsPage.Url()">Se fler senaste nyheter</a>
+        </div>
     }
 
 </section>
@@ -98,5 +111,13 @@
             <p>Inga nyheter finns tillgängliga.</p>
         }
     </div>
+
+    
+    @if (latestNewsPage != null)
+    {
+        <div>
+            <a href="@latestNewsPage.Url()">Se fler senaste nyheter</a>
+        </div>
+    }
 
 </section>
