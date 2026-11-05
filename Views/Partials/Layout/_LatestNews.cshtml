@@ -6,8 +6,7 @@
     // Hämtar Home-sidan
     var home = Umbraco.ContentAtRoot().FirstOrDefault();
 
-
-    // Hämtar de fem senast skapade artiklarna
+    // Hämtar de fem senast uppdaterade artiklarna
     var articles = home?
         .Descendants()
         .Where(x => x.ContentType.Alias == "articlePage")
@@ -15,10 +14,11 @@
         .Take(5)
         .ToList() ?? new List<IPublishedContent>();
 
+    // Hämtar sidan för fler senaste nyheter
     var latestNewsPage = Model.Root()
-    .Descendants()
-    .FirstOrDefault(x =>
-        x.ContentType.Alias == "latestNewsPage");
+        .Descendants()
+        .FirstOrDefault(x =>
+            x.ContentType.Alias == "latestNewsPage");
 }
 
 <!-- PHONE AND IPAD -->
@@ -33,7 +33,8 @@
 
                 <li class="bg-white shadow-md p-3 md:p-4">
 
-                    <a href="@article.Url()" class="block font-meta font-black text-text-main text-xl md:text-2xl leading-tight">
+                    <a href="@article.Url()"
+                       class="block font-meta font-black text-text-main text-xl md:text-2xl leading-tight">
 
                         <span class="text-accent">JUST NU:</span>
                         @title
@@ -42,17 +43,18 @@
                 </li>
             }
         </ul>
-        
     }
     else
     {
         <p>Inga nyheter finns tillgängliga.</p>
     }
 
-    @if(latestNewsPage != null)
+    @if (latestNewsPage != null)
     {
         <div>
-            <a href="@latestNewsPage.Url()">Se fler senaste nyheter</a>
+            <a href="@latestNewsPage.Url()">
+                Se fler senaste nyheter
+            </a>
         </div>
     }
 
@@ -60,33 +62,46 @@
 
 
 <!-- DESKTOP -->
-<section class="hidden lg:block bg-white rounded-tl-[50px] rounded-br-[50px] shadow-[0_0_12px_2px_rgba(0,0,0,0.25)] overflow-hidden w-full max-w-[624px] h-[758px]">
+<section class="hidden lg:block bg-white rounded-tl-[50px] rounded-br-[50px] shadow-[0_0_12px_2px_rgba(0,0,0,0.25)] overflow-hidden w-full max-w-[624px]">
 
+    <!-- RUBRIK -->
     <div class="bg-accent rounded-tl-[50px] rounded-br-[50px] w-fit max-w-full px-6 py-2 flex justify-center items-center">
+
         <h3 class="text-white article-category text-2xl whitespace-nowrap pb-2">
             Senaste nytt
         </h3>
+
     </div>
 
+
+    <!-- ARTIKELLISTA -->
     <div>
+
         @if (articles.Any())
         {
-            <ul>
+            <ul class="flex flex-col gap-4 py-4">
+
                 @foreach (var article in articles)
                 {
                     var title = article.Value<string>("articleTitle") ?? article.Name;
 
-                    <li class="mt-4 ml-4">
+                    <li class="ml-4">
+
                         <div class="flex items-start">
 
-                            <!-- Red Pin -->
+                            <!-- RED PIN -->
                             <div class="flex flex-col items-center gap-1 mr-2">
+
                                 <span class="w-4 h-4 bg-accent rounded-full shrink-0"></span>
+
                                 <div class="w-[2px] flex-1 min-h-12 bg-gray-300"></div>
+
                             </div>
 
-                            <!-- Article info -->
-                            <div>
+
+                            <!-- ARTICLE INFO -->
+                            <div class="min-w-0 flex-1">
+
                                 <div class="flex flex-col mb-2">
 
                                     <time class="article-date">
@@ -98,24 +113,42 @@
                                     </a>
 
                                 </div>
+
                             </div>
 
                         </div>
+
                     </li>
                 }
+
             </ul>
         }
         else
         {
-            <p>Inga nyheter finns tillgängliga.</p>
+            <p class="p-4">Inga nyheter finns tillgängliga.</p>
         }
+
     </div>
 
-    
+
+    <!-- SE FLER SENASTE NYHETER -->
     @if (latestNewsPage != null)
     {
         <div>
-            <a href="@latestNewsPage.Url()">Se fler senaste nyheter</a>
+
+            <hr class="border-t border-text-muted w-full" />
+
+            <div class="flex justify-center py-3">
+
+                <a href="@latestNewsPage.Url()"
+                   class="text-text-muted font-meta font-bold text-xl">
+
+                    Se fler senaste nyheter
+
+                </a>
+
+            </div>
+
         </div>
     }
 
