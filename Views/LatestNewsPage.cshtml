@@ -1,0 +1,40 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.LatestNewsPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "mainLayout.cshtml";
+
+    var articles = Model.Root()
+        .Descendants()
+        .Where(x => x.ContentType.Alias == "articlePage")
+        .OrderByDescending(x => x.UpdateDate)
+        .Take(20)
+        .ToList();
+}
+<section>
+    <h1>
+        Senaste nyheter
+    </h1>
+    <div>
+        @if (articles.Any())
+        {
+            @foreach(var article in articles)
+            {
+                var title = article.Value<string>("articleTitle") ?? article.Name;
+
+                <article>
+                    <p>@article.UpdateDate.ToString("yyyy-MM-dd HH:mm")</p>
+
+                    <a href="@article.Url()">@title</a>
+                </article>
+            }
+
+        }
+        else
+        {
+            <p>Det finns inga nyheter att visa</p>
+        }
+    </div>
+
+
+</section>
