@@ -4,7 +4,6 @@
 @using Umbraco.Cms.Core.Models.Blocks
 @using Umbraco.Cms.Core.Strings
 
-
 @{
 	Layout = "mainLayout.cshtml";
 
@@ -27,15 +26,15 @@
 
 		</div>
 
-
-		<section class="px-4 py-6 text-[#0B2945]">
+		 
+		<section class="px-2 py-6 text-[#0B2945]">
 			@if (aboutSections != null)
 			{
 				@foreach (var section in aboutSections)
 				{
 					var aboutCards = section.Content.Value<BlockListModel>("cards");
 
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 						@if (aboutCards != null)
 						{
 							foreach (var card in aboutCards)
