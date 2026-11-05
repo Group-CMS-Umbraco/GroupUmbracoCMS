@@ -18,24 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-<<<<<<<< HEAD:umbraco/models/ContactPage.generated.cs
-	/// <summary>Contact Page</summary>
-	[PublishedModel("contactPage")]
-	public partial class ContactPage : PublishedContentModel
-========
 	/// <summary>LatestNewsPage</summary>
 	[PublishedModel("latestNewsPage")]
 	public partial class LatestNewsPage : PublishedContentModel
->>>>>>>> 819ae62f46d924041a2f7068fe0753d43d9dd026:umbraco/models/LatestNewsPage.generated.cs
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
-<<<<<<<< HEAD:umbraco/models/ContactPage.generated.cs
-		public new const string ModelTypeAlias = "contactPage";
-========
 		public new const string ModelTypeAlias = "latestNewsPage";
->>>>>>>> 819ae62f46d924041a2f7068fe0753d43d9dd026:umbraco/models/LatestNewsPage.generated.cs
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
@@ -44,54 +34,19 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-<<<<<<<< HEAD:umbraco/models/ContactPage.generated.cs
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<ContactPage, TValue>> selector)
-========
 		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<LatestNewsPage, TValue>> selector)
->>>>>>>> 819ae62f46d924041a2f7068fe0753d43d9dd026:umbraco/models/LatestNewsPage.generated.cs
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-<<<<<<<< HEAD:umbraco/models/ContactPage.generated.cs
-		public ContactPage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
-========
 		public LatestNewsPage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
->>>>>>>> 819ae62f46d924041a2f7068fe0753d43d9dd026:umbraco/models/LatestNewsPage.generated.cs
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
 		}
 
 		// properties
-<<<<<<<< HEAD:umbraco/models/ContactPage.generated.cs
-
-		///<summary>
-		/// Contact Cards
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("contactCards")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ContactCards => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "contactCards");
-
-		///<summary>
-		/// Intro Text
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("introText")]
-		public virtual string IntroText => this.Value<string>(_publishedValueFallback, "introText");
-
-		///<summary>
-		/// Page Title
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageTitle")]
-		public virtual string PageTitle => this.Value<string>(_publishedValueFallback, "pageTitle");
-========
->>>>>>>> 819ae62f46d924041a2f7068fe0753d43d9dd026:umbraco/models/LatestNewsPage.generated.cs
 	}
 }
