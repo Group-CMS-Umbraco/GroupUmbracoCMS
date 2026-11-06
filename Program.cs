@@ -17,6 +17,12 @@ builder.Services.AddScoped<NewstipSubmissionService>();
 
 WebApplication app = builder.Build();
 
+var active404Key = app.Configuration[
+    "Umbraco:CMS:Content:Error404Collection:0:ContentKey"
+];
+
+Console.WriteLine($"Aktivt 404-GUID: {active404Key}");
+
 
 await app.BootUmbracoAsync();
 

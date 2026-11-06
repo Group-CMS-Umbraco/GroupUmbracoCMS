@@ -32,7 +32,7 @@ public class NotFoundFinder : IContentLastChanceFinder
 
         // Letar upp undersidan som har dokumenttypen 'notFoundPage'
         var errorPage = rootNode?.Children()
-            .FirstOrDefault(c => c.ContentType.Alias.Equals("notFoundPage", StringComparison.OrdinalIgnoreCase));
+            .FirstOrDefault(c => c.ContentType.Alias.Equals("pageNotFound", StringComparison.OrdinalIgnoreCase));
 
         // Om felsidan hittas kopplas den till anropet med HTTP-statuskod 404
         if (errorPage != null)

@@ -27,35 +27,51 @@
     @if (articles.Any())
     {
         <ul class="flex flex-col gap-3">
+
             @foreach (var article in articles)
             {
                 var title = article.Value<string>("articleTitle") ?? article.Name;
+                var isLast = article == articles.Last();
 
-                <li class="bg-white shadow-md p-3 md:p-4">
+                <li class="bg-white shadow-md">
 
-                    <a href="@article.Url()"
-                       class="block font-meta font-black text-text-main text-xl md:text-2xl leading-tight">
+                    <!-- ARTICLE -->
+                    <div class="p-3 md:p-4">
 
-                        <span class="text-accent">JUST NU:</span>
-                        @title
-                    </a>
+                        <a href="@article.Url()"
+                           class="block font-meta font-black text-text-main text-xl md:text-2xl leading-tight">
+
+                            <span class="text-accent">JUST NU:</span>
+                            @title
+
+                        </a>
+
+                    </div>
+
+                    <!-- SE FLER SENASTE NYHETER -->
+                    @if (isLast && latestNewsPage != null)
+                    {
+                        <div class="border-t border-text-muted">
+
+                            <a href="@latestNewsPage.Url()"
+                               class="flex justify-between items-center px-3 py-3 font-meta font-bold text-text-muted text-sm">
+
+                                <span>VISA FLER SENASTE NYHETER</span>
+                                <span>&gt;</span>
+
+                            </a>
+
+                        </div>
+                    }
 
                 </li>
             }
+
         </ul>
     }
     else
     {
         <p>Inga nyheter finns tillgängliga.</p>
-    }
-
-    @if (latestNewsPage != null)
-    {
-        <div>
-            <a href="@latestNewsPage.Url()">
-                Se fler senaste nyheter
-            </a>
-        </div>
     }
 
 </section>
@@ -67,7 +83,7 @@
     <!-- RUBRIK -->
     <div class="bg-accent rounded-tl-[50px] rounded-br-[50px] w-fit max-w-full px-6 py-2 flex justify-center items-center">
 
-        <h3 class="text-white article-category text-2xl whitespace-nowrap pb-2">
+        <h3 class="text-white article-category text-2xl whitespace-nowrap pb-2 ml-2 mr-2">
             Senaste nytt
         </h3>
 
@@ -104,8 +120,9 @@
 
                                 <div class="flex flex-col mb-2">
 
-                                    <time class="article-date">
-                                        @article.CreateDate.ToString("HH:mm")
+                                    <time class="article-date flex gap-1">
+                                        <span>@article.CreateDate.ToString("ddd")</span>
+                                        <span>@article.CreateDate.ToString("HH:mm")</span>
                                     </time>
 
                                     <a href="@article.Url()" class="article-category">
@@ -113,7 +130,6 @@
                                     </a>
 
                                 </div>
-
                             </div>
 
                         </div>
@@ -138,13 +154,11 @@
 
             <hr class="border-t border-text-muted w-full" />
 
-            <div class="flex justify-center py-3">
+            <div class="flex justify-center items-center py-3">
 
                 <a href="@latestNewsPage.Url()"
                    class="text-text-muted font-meta font-bold text-xl">
-
                     Se fler senaste nyheter
-
                 </a>
 
             </div>
