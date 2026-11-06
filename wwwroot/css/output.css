@@ -548,6 +548,9 @@
   .bg-\[\#F8FAFC\] {
     background-color: #F8FAFC;
   }
+  .bg-\[\#FFFFFF\] {
+    background-color: #FFFFFF;
+  }
   .bg-\[var\(--color-page\)\] {
     background-color: var(--color-page);
   }
