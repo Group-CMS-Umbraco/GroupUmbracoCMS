@@ -1,6 +1,7 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.LatestNewsPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
 @{
     Layout = "mainLayout.cshtml";
 
@@ -11,30 +12,130 @@
         .Take(20)
         .ToList();
 }
-<section>
-    <h1>
-        Senaste nyheter
-    </h1>
-    <div>
+
+
+<!-- PHONE AND IPAD -->
+<section class="block lg:hidden w-full mx-auto">
+    <div class="flex flex-col bg-white shadow-md px-12 pt-6">
+
+        <!-- RUBRIK -->
+        <div class="bg-accent">
+            <h1 class="text-white article-category text-2xl whitespace-nowrap pb-2 ml-2 mr-2">
+                Senaste nyheter
+            </h1>
+        </div>
+
         @if (articles.Any())
         {
-            @foreach(var article in articles)
+            @foreach (var article in articles)
             {
                 var title = article.Value<string>("articleTitle") ?? article.Name;
 
-                <article>
-                    <p>@article.UpdateDate.ToString("yyyy-MM-dd HH:mm")</p>
+                <div class="flex items-start p-2">
 
-                    <a href="@article.Url()">@title</a>
-                </article>
+                    <!-- RED PIN -->
+                    <div class="flex flex-col items-center gap-1 mr-2">
+
+                        <span class="w-4 h-4 bg-accent rounded-full shrink-0"></span>
+
+                        <div class="w-[2px] flex-1 min-h-12 bg-gray-300"></div>
+
+                    </div>
+
+                    <!-- ARTICLE INFO -->
+                    <div class="min-w-0 flex-1">
+
+                        <div class="flex flex-col mb-2">
+
+                            <time class="article-date flex gap-1">
+                                <span>@article.CreateDate.ToString("ddd")</span>
+                                <span>@article.CreateDate.ToString("HH:mm")</span>
+                            </time>
+
+                            <a href="@article.Url()" class="article-category">
+                                @title
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
             }
-
         }
         else
         {
             <p>Det finns inga nyheter att visa</p>
         }
+
     </div>
 
 
 </section>
+
+
+
+
+<!--DESKTOP-->
+
+<div class="max-w-[650px] p-6 lg:px-12 hidden lg:block">
+
+    <!-- SENASTE NYHETER KORTET -->
+    <section class="w-full max-w-[625px]">
+
+        <!-- RUBRIK -->
+        <div class="bg-accent">
+            <h1 class="text-white article-category text-2xl whitespace-nowrap pb-2 ml-2 mr-2">
+                Senaste nyheter
+            </h1>
+        </div>
+
+        <!-- ARTIKELLISTA -->
+        <div class="flex flex-col bg-white shadow-md">
+
+            @if (articles.Any())
+            {
+                @foreach (var article in articles)
+                {
+                    var title = article.Value<string>("articleTitle") ?? article.Name;
+
+                    <div class="flex items-start p-2">
+
+                        <!-- RED PIN -->
+                        <div class="flex flex-col items-center gap-1 mr-2">
+
+                            <span class="w-4 h-4 bg-accent rounded-full shrink-0"></span>
+
+                            <div class="w-[2px] flex-1 min-h-12 bg-gray-300"></div>
+
+                        </div>
+
+                        <!-- ARTICLE INFO -->
+                        <div class="min-w-0 flex-1">
+
+                            <div class="flex flex-col mb-2">
+
+                                <time class="article-date flex gap-1">
+                                    <span>@article.CreateDate.ToString("ddd")</span>
+                                    <span>@article.CreateDate.ToString("HH:mm")</span>
+                                </time>
+
+                                <a href="@article.Url()" class="article-category">
+                                    @title
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Det finns inga nyheter att visa</p>
+            }
+
+        </div>
+
+    </section>
+
+</div>
