@@ -283,8 +283,8 @@
   .mb-10 {
     margin-bottom: calc(var(--spacing) * 10);
   }
-  .ml-2 {
-    margin-left: calc(var(--spacing) * 2);
+  .mb-12 {
+    margin-bottom: calc(var(--spacing) * 12);
   }
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
@@ -334,11 +334,17 @@
   .h-56 {
     height: calc(var(--spacing) * 56);
   }
+  .h-auto {
+    height: auto;
+  }
   .min-h-12 {
     min-height: calc(var(--spacing) * 12);
   }
   .min-h-64 {
     min-height: calc(var(--spacing) * 64);
+  }
+  .min-h-\[90vh\] {
+    min-height: 90vh;
   }
   .min-h-\[358px\] {
     min-height: 358px;
@@ -381,6 +387,9 @@
   }
   .max-w-\[260px\] {
     max-width: 260px;
+  }
+  .max-w-\[280px\] {
+    max-width: 280px;
   }
   .max-w-\[472px\] {
     max-width: 472px;
@@ -562,6 +571,9 @@
   }
   .bg-\[\#0B1B57\] {
     background-color: #0B1B57;
+  }
+  .bg-\[\#061A57\] {
+    background-color: #061A57;
   }
   .bg-\[\#EAF3FB\] {
     background-color: #EAF3FB;
@@ -851,6 +863,11 @@
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-shadow {
     transition-property: box-shadow;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -868,6 +885,9 @@
     color: var(--color-text-muted);
   }
   @media (hover: hover) {
+    .hover\:bg-\[\#0a267a\]:hover {
+      background-color: #0a267a;
+    }
     .hover\:bg-\[\#00669f\]:hover {
       background-color: #00669f;
     }
@@ -945,6 +965,9 @@
     .md\:min-h-96 {
       min-height: calc(var(--spacing) * 96);
     }
+    .md\:max-w-\[340px\] {
+      max-width: 340px;
+    }
     .md\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -974,6 +997,10 @@
     .md\:text-2xl {
       font-size: var(--text-2xl);
       line-height: var(--tw-leading, var(--text-2xl--line-height));
+    }
+    .md\:text-3xl {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
     .md\:text-4xl {
       font-size: var(--text-4xl);
