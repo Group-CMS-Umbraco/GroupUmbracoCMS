@@ -98,7 +98,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops MainImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "mainImage");
 
 		///<summary>
-		/// Show on homepage: Kryssad ruta = artikeln visas på både startsidan + sin egen kategori. (Huvudnyhet)  Okryssad ruta = artikeln visas endast i sin egen kategori och INTE på startsidan. 
+		/// Show on homepage: Ska artikeln även synas på homepage?
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[ImplementPropertyType("showOnHomepage")]
