@@ -1,5 +1,69 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@* @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models
+@using Umbraco.Cms.Core.Models.Blocks
+@using Umbraco.Cms.Web.Common.PublishedModels
 @{
+    var home = Model?.Root() as HomePage;
+    var staff = home?.EditorialStaff ?? Enumerable.Empty<BlockListItem>();
+    var links = home?.FooterLinks ?? Enumerable.Empty<Link>();
+    var phone = home?.CustomerServicePhone;
+    var email = home?.CustomerServiceEmail;
 }
+
+<footer class="font-meta text-[15px] text-text-main">
+    <div class="bg-page">
+        <div class="mx-auto grid max-w-[1180px] grid-cols-[auto_auto] justify-center gap-x-6 px-4 py-8 text-xs md:gap-x-16 md:py-10 md:text-sm lg:grid-cols-[15rem_21rem_auto] lg:gap-x-0 lg:py-12 lg:text-[15px]">
+
+            <div class="space-y-8 lg:contents">
+                <nav aria-label="Kontakta Nordpunkt">
+                    <h2 class="font-bold">Kontakta Nordpunkt</h2>
+                    <ul class="mt-3 space-y-3 md:mt-5 md:space-y-5">
+                        @foreach (var link in links)
+                        {
+                            <li><a href="@link.Url" target="@link.Target" class="hover:underline">@link.Name</a></li>
+                        }
+                    </ul>
+                </nav>
+
+                <div>
+                    <h2 class="font-bold">Kundservice</h2>
+                    @if (!string.IsNullOrWhiteSpace(phone))
+                    {
+                        <p class="mt-3 md:mt-5">
+                            <span class="font-bold">Tel:</span>
+                            <a href="tel:@phone.Replace(" ", "")" class="hover:underline">@phone</a>
+                        </p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(email))
+                    {
+                        <p class="mt-3 md:mt-5">
+                            <span class="font-bold">Mail:</span>
+                            <a href="mailto:@email" class="break-all hover:underline">@email</a>
+                        </p>
+                    }
+                </div>
+            </div>
+
+            <dl class="grid grid-flow-col grid-cols-2 grid-rows-5 gap-x-4 gap-y-3 md:gap-x-10 md:gap-y-4 lg:grid-cols-3 lg:grid-rows-3">
+                @foreach (var item in staff)
+                {
+                    var member = (FooterStaffMember)item.Content;
+                    <div class="leading-tight">
+                        <dt class="font-bold">@member.StaffTitle:</dt>
+                        <dd>@member.StaffName</dd>
+                    </div>
+                }
+            </dl>
+        </div>
+    </div>
+
+    <div class="bg-[#EAF3FB]">
+        <div class="mx-auto flex max-w-[1180px] flex-col items-center gap-4 px-4 py-8">
+            @if (home?.Logo != null)
+            {
+                <img src="@home.Logo.Url()" alt="NordPunkt" class="h-14 w-auto" />
+            }
+            <p class="text-sm text-text-muted">© NordPunkt AB</p>
+        </div>
+    </div>
+</footer> *@
