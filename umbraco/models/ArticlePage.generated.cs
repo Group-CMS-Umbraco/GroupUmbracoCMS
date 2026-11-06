@@ -50,7 +50,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Title: Artikelns rubrik
+		/// Title: Huvudrubrik
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -58,7 +58,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string ArticleTitle => this.Value<string>(_publishedValueFallback, "articleTitle");
 
 		///<summary>
-		/// Author Image: Bild på författare
+		/// Author Image: Bild på författaren
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -66,7 +66,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops AuthorImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "authorImage");
 
 		///<summary>
-		/// Author: Artikelns författare
+		/// Author: Författarnamn
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -82,7 +82,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString BodyText => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "bodyText");
 
 		///<summary>
-		/// Image Caption: Bildtext till bilden
+		/// Image Caption: Bildtext
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -90,7 +90,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string ImageCaption => this.Value<string>(_publishedValueFallback, "imageCaption");
 
 		///<summary>
-		/// Main Image: Artikelns huvudbild
+		/// Main Image: Huvudbild
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -98,14 +98,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops MainImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "mainImage");
 
 		///<summary>
-		/// Show on homepage: Kryssad ruta = artikeln visas på både startsidan + sin egen kategori. (Huvudnyhet)  Okryssad ruta = artikeln visas endast i sin egen kategori och INTE på startsidan. 
+		/// Show on homepage: Ska artikeln även synas på homepage?
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[ImplementPropertyType("showOnHomepage")]
 		public virtual bool ShowOnHomepage => this.Value<bool>(_publishedValueFallback, "showOnHomepage");
 
 		///<summary>
-		/// Subheading: Underrubrik
+		/// Subheading: Underrubrik för framsidan
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -113,7 +113,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string Subheading => this.Value<string>(_publishedValueFallback, "subheading");
 
 		///<summary>
-		/// Summary: Artikelns ingress
+		/// Summary: Ingress
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
