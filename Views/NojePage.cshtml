@@ -12,7 +12,7 @@
             <div class="w-full lg:w-2/3 flex flex-col gap-4">
                 
                 @* Hämtar alla artiklar som ligger under Noje-sidan *@
-                @foreach (var article in Model.Descendants<ArticlePage>())
+                @foreach (var article in Model.Descendants<ArticlePage>().OrderByDescending(x => x.CreateDate))
                 {
                     <div class="bg-white w-full p-4 rounded-[12px] shadow-md">
                         @if (article.MainImage != null)
