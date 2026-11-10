@@ -17,7 +17,8 @@ public class NewstipSubmissionService(IContentService contentService)
             if (container == null)
                 return false;
 
-            var requestName = $"{DateTime.Now:yyyy-MM-dd HH-mm} - {model.Email}";
+            var contact = string.IsNullOrWhiteSpace(model.Email) ? "Anonym" : "Kontakt finns";
+            var requestName = $"{DateTime.Now:yyyy-MM-dd} - {contact} - {model.Category}";
             var request = _contentService.Create(requestName, container, "newstipRequest");
 
             request.SetValue("newstipRequestEmail", model.Email);
