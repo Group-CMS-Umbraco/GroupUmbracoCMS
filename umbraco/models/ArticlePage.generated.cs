@@ -58,20 +58,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string ArticleTitle => this.Value<string>(_publishedValueFallback, "articleTitle");
 
 		///<summary>
-		/// Author Image: Bild på författaren
+		/// Author
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("authorImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops AuthorImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "authorImage");
-
-		///<summary>
-		/// Author: Författarnamn
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.2.1+e573de0")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("authorName")]
-		public virtual string AuthorName => this.Value<string>(_publishedValueFallback, "authorName");
+		[ImplementPropertyType("author")]
+		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent Author => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "author");
 
 		///<summary>
 		/// Body Text: Brödtext

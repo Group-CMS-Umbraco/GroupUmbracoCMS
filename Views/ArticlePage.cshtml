@@ -4,12 +4,11 @@
 	Layout = "mainLayout.cshtml";
 
     var articleTitle = Model.Value<string>("articleTitle");
-    var authorName = Model.Value<string>("authorName");
     var articleDate = Model.Value<DateTime?>("date") ?? Model.CreateDate;
-    var authorImage = Model.Value<IPublishedContent>("authorImage");
     var mainImage = Model.Value<IPublishedContent>("mainImage");
     var imageCaption = Model.Value<string>("imageCaption");
     var summary = Model.Value<string>("summary");
+	var author = Model.Author as Author;
 
     var bodyText = Model.Value("bodyText");
 }
@@ -44,17 +43,26 @@
 		</div>
 
 		<div class="flex items-center gap-2" style="margin-bottom: 1rem;">
-			@if (authorImage != null)
+			@if (author?.AuthorImage != null)
 			{
-				<img src="@authorImage.Url()" alt="Porträtt av @authorName" class="w-8 h-8 rounded-full object-cover" />
-			} 
-            else
+
+				<img src="@author.AuthorImage.Url()" alt="" class="w-8 h-8 rounded-full object-cover" />
+
+			}
+			else
 			{
-				<div class="w-8 h-8 rounded-full bg-gray-300"></div>
+
+				 <img src="/images/NordPunktMini.svg" alt="" class="w-8 h-8 rounded-full bg-white object-contain p-1 ring-1 ring-gray-200" />
+
 			}
 
-			<p class="article-author">@authorName</p>
-		</div>
+			<div>
+
+				<p class="article-author">@(author?.AuthorName ?? "Redaktionen")</p>
+
+				
+    </div>
+</div>
 
 		<div>
 			<p class="article-date">Publicerad: @articleDate.ToString("yyyy-MM-dd HH:mm")</p>
